@@ -1,10 +1,12 @@
 import './App.css'
-
-function App() {
+import Navbar from './Navbar'
+export default function App() {
 
   return (
-    <div id="hello"></div>
+    <div>
+      <Navbar />
+    </div>
   )
 }
 
-export default App
+
