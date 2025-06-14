@@ -66,14 +66,12 @@ app.get('/api/messages', getMessages, (req, res) => {
      res.status(200).json(res.locals.allMessages)
 })
 
-app.post('/api/task', (req, res) => {
-    //get tasks logic here
-   res.status(200).json(res.locals.postedTask)
+app.post('/api/task', postTask, (req, res) => {
+  res.status(200).json(res.locals.postedTask);
 });
 
-app.get('/api/task', (req, res) => {
-    //create task logic here
-    res.send('Create task endpoint');
+app.get('/api/task', getTasks, (req, res) => {
+  res.status(200).json(res.locals.tasks);
 });
 
 app.delete('/api/task/:username', (req, res) => {
