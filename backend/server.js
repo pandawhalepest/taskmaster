@@ -26,13 +26,39 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
+// Import routes
 app.post('/api/signup', (req,res) => {
-     
+     //signup logic here
+    res.send('Signup endpoint');
 }) 
 
+app.post('/api/login', (req, res) => {
+    //login logic heregit 
+    res.send('Login endpoint');
+});
 
+app.get('api/task', (req, res) => {
+    //get tasks logic here
+    res.send('Get tasks endpoint');
+});
 
+app.post('/api/task', (req, res) => {
+    //create task logic here
+    res.send('Create task endpoint');
+});
 
+app.delete('/api/task/:username', (req, res) => {
+    //delete task logic here
+    res.send(`Delete task for user: ${req.params.username}`);
+});
 
+app.get('api/chat', (req, res) => {
+    //get chat logic here
+    res.send('Get chat endpoint');
+});
+app.post('/api/chat', (req, res) => {
+    //create chat logic here
+    res.send('Create chat endpoint');
+});
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
