@@ -1,7 +1,7 @@
 #board {
   /* background-image: url('/download.jpeg'); */
   background-color: rgb(150, 191, 248);
-  width: 60%;          
+  width: 70%;          
   height: 95vh;
   border-top: 3px solid black;
 }

@@ -66,7 +66,7 @@ async function deleteUser (name) {
         <div key = {index}>
             {/* display each first name and add task/delete button underneath names */}
             <div id = 'name-buttons'>
-<h2>{user}</h2>
+<h2>{user.toUpperCase()}</h2>
 <div id = 'user-buttons'>
     {/* add task button */}
 <button>Add Task</button>

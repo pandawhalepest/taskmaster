@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 95vh;
-    width: 20%;
+    width: 15%;
     position: relative;
 }
 #messages {
@@ -10,11 +10,13 @@
     width: 100%;
     flex: 3;
     background-color: #254B86;
+    /* background-image: url('/download.jpeg'); */
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-start;
     overflow-y: auto;
     min-height: 0; 
+     overflow-wrap: anywhere;
 }
 #send-message {
        display: flex;
