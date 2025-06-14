@@ -1,7 +1,9 @@
-export default function Noteboard () {
-    return (
-        <div id = 'hello'>
-            <h1>hello</h1>
-        </div>
-    )
+import Tasks from './Tasks.jsx';
+export default function Noteboard() {
+  return (
+    <div id="board">
+        {/* pass in our imported component */}
+      <Tasks />
+    </div>
+  );
 }

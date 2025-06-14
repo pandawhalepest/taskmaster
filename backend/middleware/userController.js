@@ -74,3 +74,23 @@ export const login = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+export const getUsers = async (req, res) => {
+  try {
+    const users = await User.find({})
+    res.locals.users = users
+    res.status(200).json(res.locals.users)
+  } catch(error) {
+    res.status(500).json({error: error})
+  }
+}
+export const deleteUser = async (req, res) => {
+  const {user} = req.body
+  try {
+    const deletedUser = await User.findOneAndDelete({firstName: user})
+    return res.status(200).json({ message: 'User deleted', user: deletedUser });
+
+  } catch(error) {
+     res.status(500).json({error: error})
+  }
+}

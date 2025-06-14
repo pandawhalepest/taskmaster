@@ -1,0 +1,16 @@
+#done-tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15%;
+    height: 95vh;
+    overflow-wrap: anywhere;
+    background-color: #254B86;
+    /* background-image: url('/download.jpeg'); */
+    border: 3px solid black;
+}
+#done-tasks ul {
+    list-style-type: circle;
+list-style-position: inside;
+padding-left: 10px;
+}

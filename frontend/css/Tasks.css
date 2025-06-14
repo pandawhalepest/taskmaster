@@ -1,0 +1,15 @@
+#firstnames {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#name-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#user-buttons button {
+    font-size: 12px;
+}
+
