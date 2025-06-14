@@ -4,6 +4,7 @@ import { signup, login, getUsers, deleteUser} from './middleware/userController.
 import {postMessage, getMessages} from './middleware/messageController.js'
 import { postTask } from './middleware/taskController.js';
 import dotenv from 'dotenv';
+import { getTasks, assignTask } from './middleware/taskController.js'; 
 
 dotenv.config({ path: '.env' });
 
