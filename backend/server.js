@@ -29,6 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // Import routes
+//post request for signup
 app.post('/api/signup', signup, (req, res) => {
      res.status(200).json({
     message: res.locals.message,
@@ -36,6 +37,7 @@ app.post('/api/signup', signup, (req, res) => {
   });
 }); 
 
+//post request for login
 app.post('/api/login', login, (req, res) => {
       res.status(200).json({
     message: res.locals.message,
@@ -43,18 +45,22 @@ app.post('/api/login', login, (req, res) => {
   })
 });
 
+//get request for login
 app.get('/api/login', getUsers, (req, res) => {
     res.status(200).json(res.locals.users)
 })
 
+//delete request for users
 app.delete('/api/users', deleteUser, (req, res) => {
       res.status(200).json({ message: 'User deleted', user: res.locals.deletedUser });
 })
 
+//post request for messages
 app.post('/api/messages', postMessage, (req, res) => {
      res.status(200).json(res.locals.message);
 })
 
+//get request for messages
 app.get('/api/messages', getMessages, (req, res) => {
      res.status(200).json(res.locals.allMessages)
 })
