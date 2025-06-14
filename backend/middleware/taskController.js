@@ -1,5 +1,3 @@
-import bycrpyt from 'bcrypt';
-import User from '../models/userModel.js';
 import Task from '../models/taskModel.js';
 
 
@@ -8,7 +6,7 @@ import Task from '../models/taskModel.js';
 
 const controller = {}
 
-controller.getTasks = async (req, res, next) => {
+export const getTasks = async (req, res, next) => {
     try{
         // ! declaring variables to store the users inputs by requesting the data from the body. 
         
@@ -26,7 +24,7 @@ controller.getTasks = async (req, res, next) => {
      }
 };
 
-controller.assignTask = async (req, res, next) => {
+export const assignTask = async (req, res, next) => {
     try {
        
         // ! declaring variables to store the users inputs by requesting the data from the body. 
