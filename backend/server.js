@@ -1,5 +1,6 @@
 import express from 'express';
 import connectDB from './config/database.js';
+import { signup, login } from './middleware/userController.js';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' });
@@ -27,15 +28,8 @@ app.get('/', (req, res) => {
 });
 
 // Import routes
-app.post('/api/signup', (req,res) => {
-     //signup logic here
-    res.send('Signup endpoint');
-}) 
-
-app.post('/api/login', (req, res) => {
-    //login logic heregit 
-    res.send('Login endpoint');
-});
+app.post('/api/signup', signup); 
+app.post('/api/login', login);
 
 app.get('/api/task', (req, res) => {
     //get tasks logic here
