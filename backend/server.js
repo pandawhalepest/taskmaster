@@ -29,12 +29,35 @@ app.get('/', (req, res) => {
 });
 
 // Import routes
-app.post('/api/signup', signup); 
-app.post('/api/login', login);
-app.get('/api/login', getUsers)
-app.delete('/api/users', deleteUser)
-app.post('/api/messages', postMessage)
-app.get('/api/messages', getMessages)
+app.post('/api/signup', signup, (req, res) => {
+     res.status(200).json({
+    message: res.locals.message,
+    user: res.locals.user,
+  });
+}); 
+
+app.post('/api/login', login, (req, res) => {
+      res.status(200).json({
+    message: res.locals.message,
+    user: res.locals.user,
+  })
+});
+
+app.get('/api/login', getUsers, (req, res) => {
+    res.status(200).json(res.locals.users)
+})
+
+app.delete('/api/users', deleteUser, (req, res) => {
+      res.status(200).json({ message: 'User deleted', user: res.locals.deletedUser });
+})
+
+app.post('/api/messages', postMessage, (req, res) => {
+     res.status(200).json(res.locals.message);
+})
+
+app.get('/api/messages', getMessages, (req, res) => {
+     res.status(200).json(res.locals.allMessages)
+})
 
 app.get('/api/task', (req, res) => {
     //get tasks logic here
