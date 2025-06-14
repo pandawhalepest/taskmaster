@@ -1,7 +1,9 @@
+import Tasks from './Tasks.jsx';
 export default function Noteboard() {
   return (
     <div id="board">
-      <h1>hello</h1>
+        {/* pass in our imported component */}
+      <Tasks />
     </div>
   );
 }

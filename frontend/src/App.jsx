@@ -7,7 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 export default function App() {
   return (
     <div>
-      {/* passing in navbar */}
+      {/* passing in imported navbar component */}
       <Navbar />
       {/* our routes */}
       <Routes>

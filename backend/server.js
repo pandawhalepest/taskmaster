@@ -1,6 +1,7 @@
 import express from 'express';
 import connectDB from './config/database.js';
-import { signup, login } from './middleware/userController.js';
+import { signup, login, getUsers, deleteUser} from './middleware/userController.js';
+import {postMessage, getMessages} from './middleware/messageController.js'
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' });
@@ -30,6 +31,10 @@ app.get('/', (req, res) => {
 // Import routes
 app.post('/api/signup', signup); 
 app.post('/api/login', login);
+app.get('/api/login', getUsers)
+app.delete('/api/users', deleteUser)
+app.post('/api/messages', postMessage)
+app.get('/api/messages', getMessages)
 
 app.get('/api/task', (req, res) => {
     //get tasks logic here

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-
 export default function Login() {
-  // store username and password inputs
+  // store username and password inputs and first name that was saved in database
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
 
   // async function to send post request to backend to verify login
   async function postLogin(e) {
@@ -20,8 +20,9 @@ export default function Login() {
         },
         body: JSON.stringify({ username, password }),
       });
-      // if response fails send error
+      // if response fails assign firstName to incorrect... then throw error
       if (!response.ok) {
+        setFirstName('Incorrect username/password');
         throw new Error('response failed');
       }
       // store our requested data in data variable
@@ -31,6 +32,8 @@ export default function Login() {
       // set username and password inputs to an empty string once user logs in
       setUsername('');
       setPassword('');
+      //if fetch was succesful then set first name to the saved first name saved from signup
+      setFirstName(`Welcome, ${data.user.firstName}`);
     } catch (error) {
       // log our thrown error if response fails
       console.log(error);
@@ -39,6 +42,7 @@ export default function Login() {
 
   return (
     <div id="login">
+        <h1>{firstName}</h1>
       <div id="login-box">
         {/* Login title */}
         <h1>Login</h1>

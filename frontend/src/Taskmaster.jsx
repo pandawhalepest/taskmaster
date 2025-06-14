@@ -10,6 +10,7 @@ import '/css/Donetasks.css';
 import '/css/Home.css';
 import '/css/Signup.css';
 import '/css/Login.css';
+import '/css/Tasks.css'
 
 createRoot(document.getElementById('root')).render(
   // adds additional checks

@@ -10,6 +10,11 @@
     width: 100%;
     flex: 3;
     background-color: #254B86;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    overflow-y: auto;
+    min-height: 0; 
 }
 #send-message {
        display: flex;
