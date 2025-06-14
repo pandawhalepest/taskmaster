@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    console,log('we are connected at the root endpoint');
+    console.log('we are connected at the root endpoint');
   res.send('API is running...');
 });
 
@@ -37,7 +37,7 @@ app.post('/api/login', (req, res) => {
     res.send('Login endpoint');
 });
 
-app.get('api/task', (req, res) => {
+app.get('/api/task', (req, res) => {
     //get tasks logic here
     res.send('Get tasks endpoint');
 });
@@ -52,7 +52,7 @@ app.delete('/api/task/:username', (req, res) => {
     res.send(`Delete task for user: ${req.params.username}`);
 });
 
-app.get('api/chat', (req, res) => {
+app.get('/api/chat', (req, res) => {
     //get chat logic here
     res.send('Get chat endpoint');
 });
