@@ -19,16 +19,19 @@ export const signup = async (req, res) => {
       return res.status(409).json({ error: 'Username already taken.' });
     }
 
-    // Create new user (password will be hashed by pre-save hook)
+    // Create new user
     const user = new User({ username, password, firstName, lastName });
     await user.save();
 
-    res
-      .status(201)
-      .json({
-        message: 'User created successfully',
-        user: { username, firstName, lastName },
-      });
+    res.status(201).json({
+      message: 'User created successfully',
+      user: {
+        id: user._id,
+        username,
+        firstName,
+        lastName,
+      },
+    });
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
@@ -57,9 +60,11 @@ export const login = async (req, res) => {
     if (!isMatch) {
       return res.status(401).json({ error: 'Invalid credentials.' });
     }
+
     res.json({
       message: 'Login successful',
       user: {
+        id: user._id,
         username: user.username,
         firstName: user.firstName,
         lastName: user.lastName,
