@@ -2,6 +2,7 @@ import express from 'express';
 import connectDB from './config/database.js';
 import { signup, login, getUsers, deleteUser} from './middleware/userController.js';
 import {postMessage, getMessages} from './middleware/messageController.js'
+import { postTask } from './middleware/taskController.js';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' });
@@ -65,12 +66,12 @@ app.get('/api/messages', getMessages, (req, res) => {
      res.status(200).json(res.locals.allMessages)
 })
 
-app.get('/api/task', (req, res) => {
+app.post('/api/task', (req, res) => {
     //get tasks logic here
-    res.send('Get tasks endpoint');
+   res.status(200).json(res.locals.postedTask)
 });
 
-app.post('/api/task', (req, res) => {
+app.get('/api/task', (req, res) => {
     //create task logic here
     res.send('Create task endpoint');
 });
