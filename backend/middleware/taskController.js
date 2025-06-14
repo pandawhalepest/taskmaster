@@ -1,48 +1,43 @@
 import Task from '../models/taskModel.js';
 
+// ✅ Middleware to post a generic task (from frontend-navbar)
+export const postTask = async (req, res, next) => {
+  const { title, description } = req.body;
+  try {
+    const postedTask = await Task.create({ title, description });
+    res.locals.postedTask = postedTask;
+    return next();
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
 
-// ? Middleware to handle task creation 
-// ? Get tasks for user 
-
-const controller = {}
-
+// ✅ Middleware to get all tasks for a user (from main)
 export const getTasks = async (req, res, next) => {
-    try{
-        // ! declaring variables to store the users inputs by requesting the data from the body. 
-        
-        const userId = req.user._id
-        
-         // ! declared a variable to store our found user then using the mongoose findOne method we find the user
-        const tasks = await Task.findOne({user: userId});
-        
-        // ! next 
-         res.locals.tasks = tasks;
-        
-        return next();
-     }  catch (error) {
-        return (error)
-     }
+  try {
+    const userId = req.user._id;
+    const tasks = await Task.find({ user: userId }); // assumed you want all tasks, not one
+    res.locals.tasks = tasks;
+    return next();
+  } catch (error) {
+    return next(error);
+  }
 };
 
+// ✅ Middleware to assign a task to a user (from main)
 export const assignTask = async (req, res, next) => {
-    try {
-       
-        // ! declaring variables to store the users inputs by requesting the data from the body. 
-        const { user, description } = req.body;
-        
-        // ! creating a new task using the mongoose model
-        const newTask = Task.create({ 
-            user: user._id, 
-            description: description,
-         });
-       
-        // ! saving the new task to the database
-        await newTask.save();
-        res.locals.task = newTask;
-        return next();
-    }   catch (error) {
-        return next(error);
-    }
+  try {
+    const { user, description } = req.body;
+
+    const newTask = new Task({
+      user: user._id, // assuming user object is passed
+      description,
+    });
+
+    await newTask.save();
+    res.locals.task = newTask;
+    return next();
+  } catch (error) {
+    return next(error);
+  }
 };
-
-

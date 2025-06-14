@@ -35,6 +35,7 @@ async function getFirstName () {
 //sending delete request to delete user onclick passing in our user when mapping through firstnammes
 async function deleteUser (name) {
     //try catch block
+    console.log(name)
     try {
         //fetch endpoint for delete request with method delete, content-type headers, and body stringifying our passed in user
         const response = await fetch('/api/users', {
@@ -51,6 +52,7 @@ async function deleteUser (name) {
         //parse data
         const data = await response.json()
         console.log(data)
+
         //set firstnames to new array filtering out our passed in user from our original
         setFirstNames(old => old.filter(user => user !== name))
     } catch(error) {
@@ -58,6 +60,7 @@ async function deleteUser (name) {
         console.log(error)
     }
 }
+
    return (
     <div>
     <div id = 'firstnames'>
@@ -68,10 +71,16 @@ async function deleteUser (name) {
             <div id = 'name-buttons'>
 <h2>{user.toUpperCase()}</h2>
 <div id = 'user-buttons'>
+    <div id = 'cards'>
+    <form id = 'cards-texts'>
+        <input type = 'text'/>
+        <textarea></textarea>
+    </form>
+    </div>
     {/* add task button */}
 <button>Add Task</button>
 {/* invoke delete user when delete button clicked */}
-<button onClick ={() => deleteUser(user)}>Delete user</button>
+<button onClick ={() => deleteUser(user)}>Delete</button>
 </div>
 </div>
 </div>

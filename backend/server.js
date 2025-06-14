@@ -2,6 +2,7 @@ import express from 'express';
 import connectDB from './config/database.js';
 import { signup, login, getUsers, deleteUser} from './middleware/userController.js';
 import {postMessage, getMessages} from './middleware/messageController.js'
+import { postTask } from './middleware/taskController.js';
 import dotenv from 'dotenv';
 import { getTasks, assignTask } from './middleware/taskController.js'; 
 
@@ -66,14 +67,12 @@ app.get('/api/messages', getMessages, (req, res) => {
      res.status(200).json(res.locals.allMessages)
 })
 
-app.get('/api/task', getTasks, (req, res) => {
-    //get tasks logic here
-    res.send('Get tasks endpoint');
+app.post('/api/task', postTask, (req, res) => {
+  res.status(200).json(res.locals.postedTask);
 });
 
-app.post('/api/task',assignTask, (req, res) => {
-    //create task logic here
-    res.send('Create task endpoint');
+app.get('/api/task', getTasks, (req, res) => {
+  res.status(200).json(res.locals.tasks);
 });
 
 app.delete('/api/task/:username', (req, res) => {

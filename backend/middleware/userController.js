@@ -74,7 +74,7 @@ export const login = async (req, res, next) => {
   }
 };
 
-export const getUsers = async (req, res) => {
+export const getUsers = async (req, res, next) => {
   try {
     const users = await User.find({})
     res.locals.users = users
@@ -84,9 +84,9 @@ export const getUsers = async (req, res) => {
   }
 }
 export const deleteUser = async (req, res, next) => {
-  const {user} = req.body
+  const {name} = req.body
   try {
-    const deletedUser = await User.findOneAndDelete({firstName: user})
+    const deletedUser = await User.findOneAndDelete({firstName: name})
     res.locals.deletedUser = deletedUser
    return next()
   } catch(error) {
