@@ -2,7 +2,7 @@ import User from '../models/userModel.js';
 import bcrypt from 'bcrypt';
 
 // Signup Controller
-export const signup = async (req, res) => {
+export const signup = async (req, res, next) => {
   try {
     const { username, password, firstName, lastName } = req.body;
 
@@ -23,22 +23,21 @@ export const signup = async (req, res) => {
     const user = new User({ username, password, firstName, lastName });
     await user.save();
 
-    res.status(201).json({
-      message: 'User created successfully',
-      user: {
-        id: user._id,
-        username,
-        firstName,
-        lastName,
-      },
-    });
+ res.locals.message = 'User created successfully';
+res.locals.user = {
+  id: user._id,
+  username,
+  firstName,
+  lastName,
+};
+return next()
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
 };
 
 // Login Controller
-export const login = async (req, res) => {
+export const login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
@@ -61,15 +60,15 @@ export const login = async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials.' });
     }
 
-    res.json({
-      message: 'Login successful',
-      user: {
-        id: user._id,
-        username: user.username,
-        firstName: user.firstName,
-        lastName: user.lastName,
-      },
-    });
+    res.locals.user = {
+    id: user._id,
+    username: user.username,
+    firstName: user.firstName,
+    lastName: user.lastName,
+  };
+  res.locals.message = 'Login successful';
+  return next();
+
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
@@ -79,17 +78,17 @@ export const getUsers = async (req, res) => {
   try {
     const users = await User.find({})
     res.locals.users = users
-    res.status(200).json(res.locals.users)
+    return next()
   } catch(error) {
     res.status(500).json({error: error})
   }
 }
-export const deleteUser = async (req, res) => {
+export const deleteUser = async (req, res, next) => {
   const {user} = req.body
   try {
     const deletedUser = await User.findOneAndDelete({firstName: user})
-    return res.status(200).json({ message: 'User deleted', user: deletedUser });
-
+    res.locals.deletedUser = deletedUser
+   return next()
   } catch(error) {
      res.status(500).json({error: error})
   }
