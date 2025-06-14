@@ -1,6 +1,6 @@
 #board {
-    background-image: url('/download.jpeg');
-  border: 1px solid black;
+  /* background-image: url('/download.jpeg'); */
+  background-color: rgb(95, 159, 250);
   width: 60%;          
   height: 95vh;
 }

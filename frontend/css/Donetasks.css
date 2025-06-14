@@ -4,9 +4,9 @@
     align-items: center;
     width: 20%;
     height: 95vh;
-    border: 1px solid black;
     overflow-wrap: anywhere;
-    background-color: aqua;
+    background-color: #254B86;
+    border: 3px solid black;
 }
 #done-tasks ul {
     list-style-type: circle;
