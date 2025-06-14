@@ -1,5 +1,6 @@
 import express from 'express';
 import connectDB from './config/database.js';
+import { signup, login } from './middleware/userController.js';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' });
@@ -17,4 +18,41 @@ app.use((req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
+// middleware for Json parsing
+app.use(express.json());
+
+app.get('/', (req, res) => {
+    console.log('we are connected at the root endpoint');
+  res.send('API is running...');
+});
+
+// Import routes
+app.post('/api/signup', signup); 
+app.post('/api/login', login);
+
+app.get('/api/task', (req, res) => {
+    //get tasks logic here
+    res.send('Get tasks endpoint');
+});
+
+app.post('/api/task', (req, res) => {
+    //create task logic here
+    res.send('Create task endpoint');
+});
+
+app.delete('/api/task/:username', (req, res) => {
+    //delete task logic here
+    res.send(`Delete task for user: ${req.params.username}`);
+});
+
+app.get('/api/chat', (req, res) => {
+    //get chat logic here
+    res.send('Get chat endpoint');
+});
+app.post('/api/chat', (req, res) => {
+    //create chat logic here
+    res.send('Create chat endpoint');
+});
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
