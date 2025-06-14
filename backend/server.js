@@ -3,6 +3,7 @@ import connectDB from './config/database.js';
 import { signup, login, getUsers, deleteUser} from './middleware/userController.js';
 import {postMessage, getMessages} from './middleware/messageController.js'
 import dotenv from 'dotenv';
+import { getTasks, assignTask } from './middleware/taskController.js'; 
 
 dotenv.config({ path: '.env' });
 
@@ -36,12 +37,12 @@ app.delete('/api/users', deleteUser)
 app.post('/api/messages', postMessage)
 app.get('/api/messages', getMessages)
 
-app.get('/api/task', (req, res) => {
+app.get('/api/task', getTasks, (req, res) => {
     //get tasks logic here
     res.send('Get tasks endpoint');
 });
 
-app.post('/api/task', (req, res) => {
+app.post('/api/task',assignTask, (req, res) => {
     //create task logic here
     res.send('Create task endpoint');
 });
