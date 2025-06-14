@@ -10,14 +10,14 @@ return (
         {/* project title */}
         <h1>TASKMASTER</h1>
         <div id = 'links'>
-            {/* our home link */}
-            <Link to = '/'>Home</Link>
+        {/* our home link */}
+        <Link to = '/'>Home</Link>
         {/* our sign up link */}
         <Link to = '/signup'>Sign up</Link>
         {/* our login link */}
         <Link to = '/login'>Login</Link>
         </div>
     </nav>
-    </div>
+</div>
 )
 }

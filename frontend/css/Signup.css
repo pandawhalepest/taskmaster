@@ -1,0 +1,23 @@
+#signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35vh;
+}
+#signup-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid green;
+    padding: 50px;
+    gap: 20px;
+}
+#signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#signup-submit {
+    width: 75px;
+}

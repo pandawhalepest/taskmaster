@@ -1,5 +1,6 @@
 import Chatroom from './Chatroom.jsx'
 import Noteboard from './Noteboard.jsx'
+import Donetasks from './Donetasks.jsx'
 export default function Home () {
 
     return (
@@ -8,6 +9,8 @@ export default function Home () {
     <Chatroom />
     {/* passing in our noteboard component next */}
     <Noteboard />
+    {/* passing in our donetasks component last */}
+    <Donetasks />
 </div>
     )
 }

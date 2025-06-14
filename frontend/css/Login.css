@@ -1,0 +1,23 @@
+#login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35vh;
+}
+#login-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid green;
+    padding: 50px;
+    gap: 20px;
+}
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#login-submit {
+    width: 75px;
+}

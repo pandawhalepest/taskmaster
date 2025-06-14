@@ -1,0 +1,15 @@
+#nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: lightblue;
+    height: 5vh;
+}
+#links a {
+    text-decoration: none;
+}
+#links{
+    display: flex;
+    gap: 25px;
+}

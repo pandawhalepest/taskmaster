@@ -6,7 +6,7 @@ export default function Chatroom () {
             </div>
             {/* sending a message area */}
             <form id = 'send-message'>
-                {/* text box to write a message */}
+            {/* text box to write a message */}
             <textarea type = 'textarea' id = 'message-input' placeholder = 'send a message...' />
             {/* send message button */}
             <button id = 'message-submit'>Send</button>

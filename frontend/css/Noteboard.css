@@ -1,0 +1,6 @@
+#board {
+    background-image: url('/download.jpeg');
+  border: 1px solid black;
+  width: 60%;          
+  height: 95vh;
+}
