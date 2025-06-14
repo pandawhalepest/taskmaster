@@ -1,6 +1,7 @@
 import express from 'express';
 import connectDB from './config/database.js';
 import dotenv from 'dotenv';
+import { getTasks, assignTask } from './middleware/taskController.js'; 
 
 dotenv.config({ path: '.env' });
 
@@ -37,12 +38,12 @@ app.post('/api/login', (req, res) => {
     res.send('Login endpoint');
 });
 
-app.get('/api/task', (req, res) => {
+app.get('/api/task', getTasks, (req, res) => {
     //get tasks logic here
     res.send('Get tasks endpoint');
 });
 
-app.post('/api/task', (req, res) => {
+app.post('/api/task',assignTask, (req, res) => {
     //create task logic here
     res.send('Create task endpoint');
 });
