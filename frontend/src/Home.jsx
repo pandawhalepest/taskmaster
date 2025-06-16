@@ -7,6 +7,8 @@ export default function Home() {
     <div id="home">
       <div className='background-image'>
         <div className='background-color'>
+        </div>
+      </div>
       {/* passing in our chatroom component first */}
       <Chatroom />
       {/* passing in our noteboard component next */}
@@ -14,8 +16,6 @@ export default function Home() {
       {/* passing in our donetasks component last */}
       <Donetasks />
 
-        </div>
-      </div>
     </div>
   );
 }
