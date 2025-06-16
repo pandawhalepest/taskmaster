@@ -6,9 +6,9 @@ export default function Navbar() {
       {/* our header */}
       <nav id="nav">
         {/* project logo */}
-        <img src = '/logo.png' />
+        {/* <img src = '/logo.png' /> */}
+        <span id='task-logo'>Task<span id='master-logo'>master</span></span>
         {/* project title */}
-        <h1>TASKMASTER</h1>
         <div id="links">
           {/* our home link */}
           <Link to="/">Home</Link>

@@ -141,7 +141,7 @@ setTasks(prev => {
                 //desctrucitng taskObj
               const { task, desc, done, completed } = taskObj;
             //   background color for when they click done with tasks
-              const backgroundColor = completed ? 'green' : 'red';
+              const backgroundColor = completed ? '#44ac64' : '#dc4444';
               return (
                 <div key={taskIndex} id="cards" style={{ backgroundColor }}>
                     {/* check if task has not been marked as done yet */}
@@ -162,7 +162,7 @@ setTasks(prev => {
                     >
                       <input type="text" id="user-task" placeholder="Add task..." />
                       <textarea id="description" placeholder="Add description..." />
-                      <button type="submit">Add</button>
+                      <button type="submit" className='add-button'>Add</button>
                     </form>
                   ) : (
                     //if task is already done, display it along with description
@@ -174,7 +174,7 @@ setTasks(prev => {
                       {/* if task is not completed yet, show 'Done with task' button */}
                       {!completed && (
                         // button for done with task and onclick pass in user and taskIndex to our mark comopleted funciton
-                        <button onClick={() => markCompleted(user, taskIndex)}>
+                        <button className="done-button" onClick={() => markCompleted(user, taskIndex)}>
                           Done with task
                         </button>
                       )}
@@ -186,9 +186,9 @@ setTasks(prev => {
           </div>
           <div id="buttons">
             {/* button to add new task for the user */}
-            <button onClick={() => addTasks(user)}>Add Task</button>
+            <button className='add-task-button' onClick={() => addTasks(user)}>Add Task</button>
             {/* button to remove user */}
-            <button onClick={() => deleteUser(user)}>Delete User</button>
+            <button className='delete-user-button' onClick={() => deleteUser(user)}>Delete User</button>
           </div>
         </div>
       ))}

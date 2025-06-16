@@ -61,7 +61,7 @@ async function deleteTasks () {
     // testing and using as template
     <div id="done-tasks">
       {/* display done tasks */}
-      <h2>Done Tasks</h2>
+      <h2 className='task-head'>Done Tasks</h2>
       <ul>
         {/* map our done tasks array with our task names that are done */}
         {doneTask.map((taskName, index)=> (
@@ -71,7 +71,7 @@ async function deleteTasks () {
           </div>
         ))}
         {/* button to delete all tasks */}
-        <button onClick = {deleteTasks}>Delete Tasks</button>
+        <button onClick = {deleteTasks} className='delete-tasks-button'>Delete Tasks</button>
       </ul>
     </div>
   );
