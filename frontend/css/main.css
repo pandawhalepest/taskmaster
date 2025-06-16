@@ -70,6 +70,11 @@ body {
   padding-left: 10px;
 }
 
+#tasks {
+    display: flex;
+    flex-direction: column;
+}
+
 /* Home.css */
 #home {
   display: flex;
@@ -96,7 +101,7 @@ body {
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  position: absolute;
+  /* position: absolute; */
   z-index: -1;
   overflow: auto;
   background-size: cover;
@@ -259,5 +264,12 @@ img {
   flex-direction: column;
   padding: 10px;
 }
-
+#description {
+    height: 10vh;
+    resize: none;
+}
+#buttons {
+    display: flex;
+    gap: 5px;
+}
 /* global css styling */
