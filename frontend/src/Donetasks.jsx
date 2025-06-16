@@ -2,13 +2,11 @@ import {useState, useEffect} from 'react'
 export default function Noteboard() {
   //store done tasks
    const [doneTask, setDoneTask] = useState([])
+   const [taskName, setTaskName] = useState('')
    //refresh invoking get tasks on mount
 useEffect(() => {
   getTasks()
-    //   const intervalId = setInterval(getTasks, 1000); // fetch every 5 seconds
-
-    // return () => clearInterval(intervalId); 
-}, [])
+}, [doneTask])
 // async function to get tasks from database
 async function getTasks () {
   //try catch block
@@ -35,21 +33,45 @@ async function getTasks () {
     console.log(error)
   }
 }
+
+//async function to delete all tasks when button is clicked
+async function deleteTasks () {
+  //try catch block
+  try {
+    //fetch at endpoint api task and use delete method and content tyype headesr
+  const response = await fetch('/api/task', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  //check if response fails if it does throw response failed
+  if(!response.ok){
+    throw new Error('response failed')
+  }
+  //parse data
+  const data = await response.json()
+  console.log(data)
+  } catch(error) {
+    //log thrown error
+    console.log(error)
+  }
+}
   return (
     // testing and using as template
     <div id="done-tasks">
       {/* display done tasks */}
-      <h1>Done Tasks</h1>
+      <h2>Done Tasks</h2>
       <ul>
         {/* map our done tasks array with our task names that are done */}
-        {doneTask.map((value, index)=> (
+        {doneTask.map((taskName, index)=> (
           <div key ={index} id="tasks">
             {/* display each task name */}
-          <li>{value}</li>
-          {/* delete. button */}
-          <button>delete</button>
+          <li>{taskName}</li>
           </div>
         ))}
+        {/* button to delete all tasks */}
+        <button onClick = {deleteTasks}>Delete Tasks</button>
       </ul>
     </div>
   );

@@ -13,8 +13,10 @@
     list-style-type: circle;
 list-style-position: inside;
 padding-left: 10px;
+ overflow-wrap: anywhere;
 }
 #tasks {
     display: flex;
     flex-direction: column;
+     overflow-wrap: anywhere;
 }
