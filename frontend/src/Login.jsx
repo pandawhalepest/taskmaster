@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 export default function Login() {
-  // store username and password inputs and first name that was saved in database
+  // store username and password inputs that was saved in database
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-
+  //store errors when logging in
+  const [loginError, setLoginError] = useState('')
+const navigate = useNavigate()
   // async function to send post request to backend to verify login
   async function postLogin(e) {
     // prevent browser refresh when submitting login
@@ -22,7 +23,8 @@ export default function Login() {
       });
       // if response fails assign firstName to incorrect... then throw error
       if (!response.ok) {
-        setFirstName('Incorrect username/password');
+        //set login error to the error
+        setLoginError('Incorrect username/password');
         throw new Error('response failed');
       }
       // store our requested data in data variable
@@ -32,8 +34,7 @@ export default function Login() {
       // set username and password inputs to an empty string once user logs in
       setUsername('');
       setPassword('');
-      //if fetch was succesful then set first name to the saved first name saved from signup
-      setFirstName(`Welcome, ${data.user.firstName}`);
+     navigate('/')
     } catch (error) {
       // log our thrown error if response fails
       console.log(error);
@@ -42,7 +43,7 @@ export default function Login() {
 
   return (
     <div id="login">
-        <h1>{firstName}</h1>
+      <h1>{loginError}</h1>
       <div id="login-box">
         {/* Login title */}
         <h1>Login</h1>

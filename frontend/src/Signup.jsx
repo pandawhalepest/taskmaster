@@ -6,6 +6,7 @@ export default function Signup() {
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  //store error when signing up
   const [error, setError] = useState('')
 
 
