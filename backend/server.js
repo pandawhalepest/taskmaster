@@ -2,9 +2,8 @@ import express from 'express';
 import connectDB from './config/database.js';
 import { signup, login, getUsers, deleteUser} from './middleware/userController.js';
 import {postMessage, getMessages} from './middleware/messageController.js'
-import { postTask } from './middleware/taskController.js';
+import { postTask, getTasks } from './middleware/taskController.js';
 import dotenv from 'dotenv';
-import { getTasks, assignTask } from './middleware/taskController.js'; 
 
 dotenv.config({ path: '.env' });
 
@@ -75,18 +74,18 @@ app.get('/api/task', getTasks, (req, res) => {
   res.status(200).json(res.locals.tasks);
 });
 
-app.delete('/api/task/:username', (req, res) => {
-    //delete task logic here
-    res.send(`Delete task for user: ${req.params.username}`);
-});
+// app.delete('/api/task/:username', (req, res) => {
+//     //delete task logic here
+//     res.send(`Delete task for user: ${req.params.username}`);
+// });
 
-app.get('/api/chat', (req, res) => {
-    //get chat logic here
-    res.send('Get chat endpoint');
-});
-app.post('/api/chat', (req, res) => {
-    //create chat logic here
-    res.send('Create chat endpoint');
-});
+// app.get('/api/chat', (req, res) => {
+//     //get chat logic here
+//     res.send('Get chat endpoint');
+// });
+// app.post('/api/chat', (req, res) => {
+//     //create chat logic here
+//     res.send('Create chat endpoint');
+// });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

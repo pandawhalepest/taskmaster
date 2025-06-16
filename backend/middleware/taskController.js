@@ -8,15 +8,14 @@ export const postTask = async (req, res, next) => {
     res.locals.postedTask = postedTask;
     return next();
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(500).json({ error: error.message });
   }
 };
 
 // ✅ Middleware to get all tasks for a user (from main)
 export const getTasks = async (req, res, next) => {
   try {
-    const userId = req.user._id;
-    const tasks = await Task.find({ user: userId }); // assumed you want all tasks, not one
+    const tasks = await Task.find({}); // assumed you want all tasks, not one
     res.locals.tasks = tasks;
     return next();
   } catch (error) {

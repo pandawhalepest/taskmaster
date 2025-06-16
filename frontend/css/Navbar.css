@@ -1,21 +1,21 @@
 #nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  background-color: rgb(253, 253, 255);
-  color: #254b86;
-  height: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(253, 253, 255);
+    color: #254B86;
+    height: 5vh;
 }
 #links a {
-  text-decoration: none;
-  color: #254b86;
+    text-decoration: none;
+     color:#254B86;
 }
-#links {
-  display: flex;
-  gap: 25px;
+#links{
+    display: flex;
+    gap: 25px;
 }
 img {
-  height: 85px;
-  width: 85px;
+    height: 85px;
+    width: 85px;
 }
