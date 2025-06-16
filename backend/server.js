@@ -2,7 +2,7 @@ import express from 'express';
 import connectDB from './config/database.js';
 import { signup, login, getUsers, deleteUser} from './middleware/userController.js';
 import {postMessage, getMessages} from './middleware/messageController.js'
-import { postTask, getTasks } from './middleware/taskController.js';
+import { postTask, getTasks, deleteTasks } from './middleware/taskController.js';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' });
@@ -74,6 +74,9 @@ app.get('/api/task', getTasks, (req, res) => {
   res.status(200).json(res.locals.tasks);
 });
 
+app.delete('/api/task', deleteTasks, (req, res) => {
+  res.status(200).json(res.locals.deletedTasks)
+})
 // app.delete('/api/task/:username', (req, res) => {
 //     //delete task logic here
 //     res.send(`Delete task for user: ${req.params.username}`);
