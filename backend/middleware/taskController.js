@@ -40,3 +40,13 @@ export const assignTask = async (req, res, next) => {
     return next(error);
   }
 };
+
+export const deleteTasks = async (req, res, next) => {
+  try {
+    const deletedTasks = await Task.deleteMany({})
+    res.locals.deletedTasks = deletedTasks
+    return next()
+  } catch(error) {
+    res.status(500).json({error: error})
+  }
+}
