@@ -1,275 +1,260 @@
 /* css moved to a single file here from previous multiple files */
 /* App.css */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html,
 body {
-  height: 100%;
-  margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
 /* Chatroom.css */
 #chatroom {
-  display: flex;
-  flex-direction: column;
-  height: 85vh;
-  width: 15%;
-  position: relative;
-  margin: 25px 0px 0px 25px;
-  z-index: 10;
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    width: 15%;
+    position: relative;
+    margin: 30px 25px 25px 25px;
+    box-shadow: 10px 10px 15px 0px #434343;
+
 }
 
 #messages {
-  /* border: 3px solid black; */
-  width: 100%;
-  flex: 3;
-  background-color: #254b86;
-  /* background-image: url('/download.jpeg'); */
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-start;
-  overflow-y: auto;
-  min-height: 0;
-  overflow-wrap: anywhere;
+    /* border: 3px solid black; */
+    border-radius: 10px;
+    width: 100%;
+    flex: 3;
+    /* background-color: #254b86; */
+    /* background-image: url('/download.jpeg'); */
+    background-image: url("../public/old-paper-1.jpg");
+    background-size: auto;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    overflow-y: auto;
+    min-height: 0;
+    overflow-wrap: anywhere;
 }
 
 #send-message {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  width: 100%;
-  border-right: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    border-right: 3px solid black;
 }
 
 #message-input {
-  resize: none;
-  height: 100%;
+    resize: none;
+    height: 100%;
 }
 
 /* Donetasks.css */
 #done-tasks {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 15%;
-  height: 85vh;
-  overflow-wrap: anywhere;
-  background-color: #254b86;
-  /* background-image: url('/download.jpeg'); */
-  /* border: 3px solid black; */
-  margin: 25px 25px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 15%;
+    height: 85vh;
+    overflow-wrap: anywhere;
+    /* background-color: #254b86; */
+    /* background-image: url('/download.jpeg'); */
+    /* border: 3px solid black; */
+    margin: 30px 25px 25px 25px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px 0px #6d6d6d;
+    background-image: url("../public/old-paper-2.jpg");
+    background-size: auto;
+    background-position: center;
+    background-size: cover;
 }
 
 #done-tasks ul {
-  list-style-type: circle;
-  list-style-position: inside;
-  padding-left: 10px;
+    list-style-type: circle;
+    list-style-position: inside;
+    padding-left: 25px;
 }
 
 #tasks {
     display: flex;
     flex-direction: column;
+    margin-bottom: 5px;
 }
 
 /* Home.css */
 #home {
-  display: flex;
-  flex-direction: row;
-}
+    display: flex;
+    flex-direction: row;
+    background-image: url("public/cardboard-with-gradient.jpg");
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: auto;
+    background-size: cover;
 
-/* styles added to Home.jsx */
-
-.background-image {
-  /* background-image: url("./public/cardboard-1920x1080.png");
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100vw;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: auto;
-  background-size: cover;
-  z-index: -2; */
-  background: linear-gradient(to top right, #000000, #ffffff);
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* position: absolute; */
-  z-index: -1;
-  overflow: auto;
-  background-size: cover;
-    /* opacity: 0.5; */
-
-}
-
-.background-color {
-  /* background: linear-gradient(to top right, #000000, #ffffff);
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  z-index: -1;
-  overflow: auto;
-  background-size: cover; */
-  /* opacity: 0.5; */
-  display: flex;
-  flex-direction: row;
 }
 
 /* Login.css */
 #login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35vh;
 }
 
 #login-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid black;
-  background-color: #254b86;
-  padding: 50px;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    background-color: #254b86;
+    padding: 50px;
+    gap: 20px;
 }
 
 #login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #login-submit {
-  width: 75px;
+    width: 75px;
 }
 
 /* Navbar.css */
 #nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  background-color: rgb(253, 253, 255);
-  color: #254b86;
-  height: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: rgb(207, 207, 207); */
+    /* color: #254b86; */
+    height: 5vh;
+    padding-left: 100px;
+    padding-right: 100px;
+    background-image: url("../public/wood-nav.jpg");
+    background-size: auto;
+    background-position: center;
+    background-size: cover;
 }
 
 #links a {
-  text-decoration: none;
-  color: #254b86;
+    text-decoration: none;
+    color: #fffafa;
+    font-family: "Nunito Sans", sans-serif;
+    font-style: normal;
+    font-weight: 400;
 }
 
 #links {
-  display: flex;
-  gap: 25px;
+    display: flex;
+    gap: 25px;
 }
 
 img {
-  height: 85px;
-  width: 85px;
+    height: 85px;
+    width: 85px;
 }
 
 /* Noteboard.css */
 #board {
-  /* background-image: url('/download.jpeg'); */
-  background-color: rgb(150, 191, 248);
-  width: 70%;
-  height: 85vh;
-  /* border-top: 3px solid black; */
-  margin: 25px 25px 0 25px;
+    /* background-image: url('/download.jpeg'); */
+    background-color: rgb(150, 191, 248);
+    width: 70%;
+    height: 85vh;
+    /* border-top: 3px solid black; */
+    margin: 30px 0px 25px 0px;
+    border-radius: 10px;
+    background-image: url("../public/paper-texture-gradient.jpg");
+    background-size: auto;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 10px 10px 15px 0px #575757;
 }
 
 /* Signup.css */
 #signup {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35vh;
 }
 
 #signup-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid black;
-  background-color: #254b86;
-  padding: 50px;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    background-color: #254b86;
+    padding: 50px;
+    gap: 20px;
 }
 
 #signup-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #signup-submit {
-  width: 75px;
+    width: 75px;
 }
 
 /* Tasks.css */
 #firstnames {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 10px;
 }
 
-#name-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#user-buttons button {
-  font-size: 12px;
+#user-column {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
 }
 
 #user-buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
 }
 
 #cards {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 20vh;
-  overflow-wrap: anywhere;
-  border: 1px solid black;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    overflow-wrap: anywhere;
+    border: 1px solid black;
+    background-color: red;
+    border-radius: 15px;
 }
 
 #cards-texts {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-#description {
-    height: 10vh;
-    resize: none;
-}
-#buttons {
     display: flex;
+    flex-direction: column;
+    padding: 10px;
     gap: 5px;
 }
+
 /* global css styling */
