@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react'
 export default function Tasks (props) {
     //store firstnames from user database
     const [firstNames, setFirstNames] = useState([])
+    const [array, setArray] = useState([])
+    
     //get first names everytime component mounts
     useEffect(() => {
 getFirstName()
@@ -27,6 +29,7 @@ async function getFirstName () {
     const namesArray = Array.from(uniqueNames)
     //set first names to new array 
     setFirstNames(namesArray)
+    setArray([null,null, null, null])
     } catch(error) {
         //log thrown error if response fails
         console.log(error)
@@ -64,6 +67,7 @@ async function deleteUser (name) {
    return (
     <div>
     <div id = 'firstnames'>
+      
         {/* map our array we set with out first names */}
        {firstNames.map((user, index) => (
         <div key = {index}>
@@ -71,14 +75,18 @@ async function deleteUser (name) {
             <div id = 'name-buttons'>
 <h2>{user.toUpperCase()}</h2>
 <div id = 'user-buttons'>
+    {array.map((box) => (
     <div id = 'cards'>
+        <div id = 'cards-box'>
     <form id = 'cards-texts'>
         <input type = 'text'/>
         <textarea></textarea>
+         <button>Done</button>
     </form>
     </div>
+    </div>
+    ))}
     {/* add task button */}
-<button>Add Task</button>
 {/* invoke delete user when delete button clicked */}
 <button onClick ={() => deleteUser(user)}>Delete</button>
 </div>
