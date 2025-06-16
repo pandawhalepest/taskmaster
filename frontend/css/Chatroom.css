@@ -1,31 +1,31 @@
 #chatroom {
-    display: flex;
-    flex-direction: column;
-    height: 95vh;
-    width: 15%;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 95vh;
+  width: 15%;
+  position: relative;
 }
 #messages {
-    border: 3px solid black;
-    width: 100%;
-    flex: 3;
-    background-color: #254B86;
-    /* background-image: url('/download.jpeg'); */
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-start;
-    overflow-y: auto;
-    min-height: 0; 
-     overflow-wrap: anywhere;
+  border: 3px solid black;
+  width: 100%;
+  flex: 3;
+  background-color: #254b86;
+  /* background-image: url('/download.jpeg'); */
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  overflow-y: auto;
+  min-height: 0;
+  overflow-wrap: anywhere;
 }
 #send-message {
-       display: flex;
-    flex-direction: column;
-    flex: 1;
-    width: 100%;
-    border-right: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  border-right: 3px solid black;
 }
 #message-input {
-    resize: none;
-   height: 100%;
+  resize: none;
+  height: 100%;
 }

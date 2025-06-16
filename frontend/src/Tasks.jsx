@@ -34,43 +34,43 @@ async function getFirstName () {
         //log thrown error if response fails
         console.log(error)
     }
-}
-//sending delete request to delete user onclick passing in our user when mapping through firstnammes
-async function deleteUser (name) {
+  }
+  //sending delete request to delete user onclick passing in our user when mapping through firstnammes
+  async function deleteUser(name) {
     //try catch block
-    console.log(name)
+    console.log(name);
     try {
-        //fetch endpoint for delete request with method delete, content-type headers, and body stringifying our passed in user
-        const response = await fetch('/api/users', {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({name})
-        })
-        //if response fails throw error
-        if(!response.ok){
-            throw new Error('response failed')
-        }
-        //parse data
-        const data = await response.json()
-        console.log(data)
+      //fetch endpoint for delete request with method delete, content-type headers, and body stringifying our passed in user
+      const response = await fetch('/api/users', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name }),
+      });
+      //if response fails throw error
+      if (!response.ok) {
+        throw new Error('response failed');
+      }
+      //parse data
+      const data = await response.json();
+      console.log(data);
 
-        //set firstnames to new array filtering out our passed in user from our original
-        setFirstNames(old => old.filter(user => user !== name))
-    } catch(error) {
-        //log thrown error
-        console.log(error)
+      //set firstnames to new array filtering out our passed in user from our original
+      setFirstNames((old) => old.filter((user) => user !== name));
+    } catch (error) {
+      //log thrown error
+      console.log(error);
     }
-}
+  }
 
-   return (
+  return (
     <div>
     <div id = 'firstnames'>
       
         {/* map our array we set with out first names */}
-       {firstNames.map((user, index) => (
-        <div key = {index}>
+        {firstNames.map((user, index) => (
+          <div key={index}>
             {/* display each first name and add task/delete button underneath names */}
             <div id = 'name-buttons'>
 <h2>{user.toUpperCase()}</h2>

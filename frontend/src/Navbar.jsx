@@ -8,7 +8,6 @@ export default function Navbar() {
         {/* project logo */}
         <img src = '/logo.png' />
         {/* project title */}
-        <h1>TASKMASTER</h1>
         <div id="links">
           {/* our home link */}
           <Link to="/">Home</Link>

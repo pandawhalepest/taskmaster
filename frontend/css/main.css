@@ -1,0 +1,263 @@
+/* css moved to a single file here from previous multiple files */
+/* App.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Chatroom.css */
+#chatroom {
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  width: 15%;
+  position: relative;
+  margin: 25px 0px 0px 25px;
+  z-index: 10;
+}
+
+#messages {
+  /* border: 3px solid black; */
+  width: 100%;
+  flex: 3;
+  background-color: #254b86;
+  /* background-image: url('/download.jpeg'); */
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  overflow-y: auto;
+  min-height: 0;
+  overflow-wrap: anywhere;
+}
+
+#send-message {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  border-right: 3px solid black;
+}
+
+#message-input {
+  resize: none;
+  height: 100%;
+}
+
+/* Donetasks.css */
+#done-tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+  height: 85vh;
+  overflow-wrap: anywhere;
+  background-color: #254b86;
+  /* background-image: url('/download.jpeg'); */
+  /* border: 3px solid black; */
+  margin: 25px 25px 0px 0px;
+}
+
+#done-tasks ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  padding-left: 10px;
+}
+
+/* Home.css */
+#home {
+  display: flex;
+  flex-direction: row;
+}
+
+/* styles added to Home.jsx */
+
+.background-image {
+  /* background-image: url("./public/cardboard-1920x1080.png");
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: auto;
+  background-size: cover;
+  z-index: -2; */
+  background: linear-gradient(to top right, #000000, #ffffff);
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -1;
+  overflow: auto;
+  background-size: cover;
+    /* opacity: 0.5; */
+
+}
+
+.background-color {
+  /* background: linear-gradient(to top right, #000000, #ffffff);
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -1;
+  overflow: auto;
+  background-size: cover; */
+  /* opacity: 0.5; */
+  display: flex;
+  flex-direction: row;
+}
+
+/* Login.css */
+#login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35vh;
+}
+
+#login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+  background-color: #254b86;
+  padding: 50px;
+  gap: 20px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#login-submit {
+  width: 75px;
+}
+
+/* Navbar.css */
+#nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(253, 253, 255);
+  color: #254b86;
+  height: 5vh;
+}
+
+#links a {
+  text-decoration: none;
+  color: #254b86;
+}
+
+#links {
+  display: flex;
+  gap: 25px;
+}
+
+img {
+  height: 85px;
+  width: 85px;
+}
+
+/* Noteboard.css */
+#board {
+  /* background-image: url('/download.jpeg'); */
+  background-color: rgb(150, 191, 248);
+  width: 70%;
+  height: 85vh;
+  /* border-top: 3px solid black; */
+  margin: 25px 25px 0 25px;
+}
+
+/* Signup.css */
+#signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35vh;
+}
+
+#signup-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+  background-color: #254b86;
+  padding: 50px;
+  gap: 20px;
+}
+
+#signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#signup-submit {
+  width: 75px;
+}
+
+/* Tasks.css */
+#firstnames {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+}
+
+#name-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#user-buttons button {
+  font-size: 12px;
+}
+
+#user-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  overflow-wrap: anywhere;
+  border: 1px solid black;
+  gap: 10px;
+}
+
+#cards-texts {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+/* global css styling */
