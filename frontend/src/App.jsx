@@ -3,12 +3,11 @@ import Login from './Login';
 import Signup from './Signup';
 import Home from './Home';
 import { Route, Routes } from 'react-router-dom';
-import GroupTasksApp from './GroupTasks';
+import GroupTasks from './GroupTasks';
 
 export default function App() {
   return (
     <div>
-      <GroupTasksApp />
       {/* passing in imported navbar component */}
       <Navbar />
       {/* our routes */}

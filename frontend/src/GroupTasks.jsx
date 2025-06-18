@@ -1,35 +1,37 @@
 import { useState } from 'react';
+import TaskPopUp from "./TaskPopUp";
 
-export default function GroupTasksApp() {
-  const [groupTask, setGroupTask] = useState([]);
-  const [popUp, setPopUp] = useState(false);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+export default function GroupTasks() {
+  const [groupTasks, setGroupTasks] = useState([]);
+  const [showPopUp, setShowPopUp] = useState(false);
 
-  const saveHandler = () => {
-    
-  }
+  const addGroupTask = (task) => setGroupTasks((prev) => [...prev, task]);
 
   return (
     <>
       <div className='group-task-box'>
-        <h1>GROUP TASKS</h1>
+        <h3>GROUP TASKS</h3>
+
+        {groupTasks.length === 0 ? (
+            <p className="no-tasks">No tasks yet...</p>
+        ): (
+            <ul className="group-task-list">
+                {groupTasks.map((title, index) => (
+                    <li key={index}>
+                        <strong>{title.title}</strong>
+                        {title.description && <> - {title.description}</>}
+                    </li>
+                ))}
+            </ul>
+        )}
       </div>
       <div className='task-box-items'>
-        <input
-          type='text'
-          value={popUpText}
-          id='input-form'
-          onChange={(e) => setPopUpText(e.target.value)}
-          placeholder='Enter tasks here'
-        ></input>
-        <button id='add-group-task-button' onClick={() => setPopUp(true)}>
+        <button id='add-group-task-button' onClick={() => setShowPopUp(true)}>
           Add Task
         </button>
-        {popUp && (
-
+        {showPopUp && (
+            <TaskPopUp onSave={addGroupTask} onClose={() => setShowPopUp(false)}/>
         )}
-
       </div>
     </>
   );
