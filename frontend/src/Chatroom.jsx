@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-export default function Chatroom() {
+import GroupTasks from './GroupTasks';
+
+export default function Chatroom( {groupTasks, setGroupTasks}) {
   //store firstnames from user database
   const [firstNames, setFirstNames] = useState([]);
   //stores user inputs of sender and content info
@@ -99,6 +101,9 @@ export default function Chatroom() {
 
   return (
     <div id="chatroom">
+      <div id="group-task-box">
+        <GroupTasks groupTasks={groupTasks} setGroupTasks={setGroupTasks}/>
+      </div>
       <div id="messages">
         {/* had to look this one up since i didnt know that we had to use slice in order not to mutate original state */}
         {/* display each element from message in reverse so we can see latest messages when interacting */}
