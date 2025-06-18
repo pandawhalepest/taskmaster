@@ -1,38 +1,5 @@
 import { useState, useEffect } from 'react';
-export default function Noteboard() {
-  //store done tasks
-  const [doneTask, setDoneTask] = useState([]);
-  const [taskName, setTaskName] = useState('');
-  //refresh invoking get tasks on mount
-  useEffect(() => {
-    getTasks();
-  }, [...doneTask]);
-  // async function to get tasks from database
-  async function getTasks() {
-    //try catch block
-    try {
-      //fetch at endpoint at api task
-      const response = await fetch('/api/task');
-      //if response fails throw error
-      if (!response.ok) {
-        throw new Error('response failed');
-      }
-      //parse data
-      const data = await response.json();
-      console.log(data);
-      //map our data for only the task names and store in variable
-      const tasks = data.map((tasks) => tasks.title);
-      // add all unique names to a variable
-      const uniqueTasks = new Set(tasks);
-      //turn the unique names from set to array
-      const newTasks = Array.from(uniqueTasks);
-      //set done tasks to the arary with unique name tasks
-      setDoneTask(newTasks);
-    } catch (error) {
-      //log thrown error
-      console.log(error);
-    }
-  }
+export default function Donetasks({ doneTask, refreshDoneTasks }) {
 
   //async function to delete all tasks when button is clicked
   async function deleteTasks() {
@@ -52,11 +19,14 @@ export default function Noteboard() {
       //parse data
       const data = await response.json();
       console.log(data);
+      refreshDoneTasks(); //? ST: Added to refresh the done tasks
     } catch (error) {
       //log thrown error
       console.log(error);
     }
   }
+
+
   return (
     // testing and using as template
     <div id='done-tasks'>
