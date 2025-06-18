@@ -234,6 +234,7 @@ img {
     background-position: center;
     background-size: cover;
     box-shadow: 10px 10px 15px 0px #575757;
+    overflow-x: auto;
 }
 
 /* Signup.css */
@@ -293,15 +294,24 @@ img {
 }
 
 #cards {
+    height: 20vh;
+    width: 20vh;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 20vh;
+
     overflow-wrap: anywhere;
     border: 1px solid black;
     background-color: red;
     border-radius: 15px;
+
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+    perspective: 1000px;
 }
 
 #cards-texts {
@@ -309,6 +319,21 @@ img {
     flex-direction: column;
     padding: 10px;
     gap: 5px;
+}
+
+#cards.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card-back {
+    position: absolute;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
 }
 
 /* global css styling */

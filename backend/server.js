@@ -1,12 +1,18 @@
 import express from 'express';
 import connectDB from './config/database.js';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import {
   signup,
   login,
   getUsers,
   deleteUser,
 } from './middleware/userController.js';
-import { postMessage, getMessages } from './middleware/messageController.js';
+import {
+  tokenVerifier,
+  postMessage,
+  getMessages,
+} from './middleware/messageController.js';
 import {
   postTask,
   getTasks,
@@ -33,8 +39,18 @@ const PORT = process.env.PORT || 3000;
 // middleware for Json parsing
 app.use(express.json());
 
-app.get('/', (req, res) => {
+//for cookies
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+  })
+);
+
+app.get('/', getTasks, (req, res) => {
   console.log('we are connected at the root endpoint');
+  //res.cookie('emily', 'hi');
   res.send('API is running...');
 });
 
@@ -42,6 +58,7 @@ app.get('/', (req, res) => {
 //post request for signup
 app.post('/api/signup', signup, (req, res) => {
   console.log(res.locals.user);
+
   res.status(200).json({
     message: res.locals.message,
     user: res.locals.user,
@@ -49,7 +66,9 @@ app.post('/api/signup', signup, (req, res) => {
 });
 
 //post request for login
-app.post('/api/login', login, (req, res) => { //!Start new session? need to store access token
+app.post('/api/login', login, (req, res) => {
+  //?Start new session? need to store access token
+
   res.status(200).json({
     message: res.locals.message,
     user: res.locals.user,
@@ -69,7 +88,9 @@ app.delete('/api/users', deleteUser, (req, res) => {
 });
 
 //post request for messages
-app.post('/api/messages', postMessage, (req, res) => {
+app.post('/api/messages', tokenVerifier, postMessage, (req, res) => {
+  console.log('postMessage', req);
+  console.log('auth!!!', req.headers['cookie']);
   res.status(200).json(res.locals.message);
 });
 
@@ -86,9 +107,10 @@ app.get('/api/task', getTasks, (req, res) => {
   res.status(200).json(res.locals.tasks);
 });
 
-app.delete('/api/task', deleteTasks, (req, res) => { 
+app.delete('/api/task', deleteTasks, (req, res) => {
   res.status(200).json(res.locals.deletedTasks);
 });
+
 // app.delete('/api/task/:username', (req, res) => {
 //     //delete task logic here
 //     res.send(`Delete task for user: ${req.params.username}`);

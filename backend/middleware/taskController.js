@@ -6,6 +6,7 @@ export const postTask = async (req, res, next) => {
   try {
     const postedTask = await Task.create({ title, description });
     res.locals.postedTask = postedTask;
+    console.log('posted task', postedTask);
     return next();
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -16,6 +17,7 @@ export const postTask = async (req, res, next) => {
 export const getTasks = async (req, res, next) => {
   try {
     const tasks = await Task.find({}); // assumed you want all tasks, not one
+    console.log('tasks', tasks);
     res.locals.tasks = tasks;
     return next();
   } catch (error) {
@@ -43,10 +45,10 @@ export const assignTask = async (req, res, next) => {
 
 export const deleteTasks = async (req, res, next) => {
   try {
-    const deletedTasks = await Task.deleteMany({})
-    res.locals.deletedTasks = deletedTasks
-    return next()
-  } catch(error) {
-    res.status(500).json({error: error})
+    const deletedTasks = await Task.deleteMany({});
+    res.locals.deletedTasks = deletedTasks;
+    return next();
+  } catch (error) {
+    res.status(500).json({ error: error });
   }
-}
+};

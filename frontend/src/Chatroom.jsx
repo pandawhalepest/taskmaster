@@ -51,6 +51,7 @@ export default function Chatroom() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          credentials: 'include',
         },
         body: JSON.stringify({ sender, content }),
       });

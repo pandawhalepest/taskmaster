@@ -48,7 +48,7 @@ export default function Tasks({ onTaskDone }) {
       //fetch at api users endpoint with delete method, content type headers, and stringifying our passed in data as body
       const response = await fetch('/api/users', {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', credentials: 'include' },
         body: JSON.stringify({ name }),
       });
       //if response fails throw error
@@ -111,6 +111,7 @@ export default function Tasks({ onTaskDone }) {
         headers: {
           //!add token to header (roles too?)
           'Content-Type': 'application/json',
+          credentials: 'include',
         },
         body: JSON.stringify({
           title,
@@ -125,6 +126,7 @@ export default function Tasks({ onTaskDone }) {
       const data = await response.json();
       console.log(data);
       if (onTaskDone) {
+        console.log('task done');
         onTaskDone();
       } //? ST: Bringing this prop in just to update the useState up the ladder
 
@@ -143,12 +145,13 @@ export default function Tasks({ onTaskDone }) {
     }
   }
 
-  // function handleFlip(user, taskIndex) {
-  //   setFlipped(prev => {
-  //     ...prev,
-  //     [`${user}-${taskIndex}`]: !prev[`${user}-${taskIndex}`]
-  //   })
-  // }
+  //? ST: Function to flip cards
+  function handleFlip(user, taskIndex) {
+    setFlipped((prev) => ({
+      ...prev,
+      [`${user}-${taskIndex}`]: !prev[`${user}-${taskIndex}`], //? ST: Setting it as a key value pair that is assigned to the Flipped useState
+    }));
+  }
 
   return (
     <div id='firstnames'>
@@ -165,12 +168,22 @@ export default function Tasks({ onTaskDone }) {
               //   background color for when they click done with tasks
               const backgroundColor = completed ? '#44ac64' : '#dc4444';
               return (
-                <div key={taskIndex} id='cards' style={{ backgroundColor }}>
-                  {/* check if task has not been marked as done yet */}
-                  {!done ? (
+                <div
+                  key={taskIndex}
+                  id='cards'
+                  className={flipped[`${user}-${taskIndex}`] ? 'flipped' : ''}
+                  style={{ backgroundColor }}
+                  onClick={() => handleFlip(user, taskIndex)}
+                >
+                  {!flipped[`${user}-${taskIndex}`] ? (
+                    <div id='cards-texts' className="card-front">Parker's stuff</div>
+                  ) : (
+                    <div id='cards-texts' className="card-back">
+                    {!done ? (
                     //display form to enter task and description
                     <form
                       id='cards-texts'
+                      onClick={e => e.stopPropagation()}
                       onSubmit={(e) => {
                         //prevent default page refresh
                         e.preventDefault();
@@ -215,6 +228,8 @@ export default function Tasks({ onTaskDone }) {
                           Done with task
                         </button>
                       )}
+                    </div>
+                  )}
                     </div>
                   )}
                 </div>
