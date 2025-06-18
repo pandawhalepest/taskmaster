@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import GroupTasks from './GroupTasks';
-export default function Chatroom() {
+
+export default function Chatroom( {groupTasks, setGroupTasks}) {
   //store firstnames from user database
   const [firstNames, setFirstNames] = useState([]);
   //stores user inputs of sender and content info
@@ -101,7 +102,7 @@ export default function Chatroom() {
   return (
     <div id="chatroom">
       <div id="group-task-box">
-        <GroupTasks />
+        <GroupTasks groupTasks={groupTasks} setGroupTasks={setGroupTasks}/>
       </div>
       <div id="messages">
         {/* had to look this one up since i didnt know that we had to use slice in order not to mutate original state */}

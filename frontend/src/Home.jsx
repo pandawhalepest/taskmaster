@@ -6,6 +6,7 @@ import GroupTasksApp from './GroupTasks.jsx';
 
 export default function Home() {
   const [doneTask, setDoneTask] = useState([]); //? ST: Bringing up this component since it needs access to things in two diff componenets
+  const [groupTasks, setGroupTasks] = useState([]);
 
   async function getTasks() {
     //try catch block
@@ -39,7 +40,7 @@ export default function Home() {
   return (
     <div id="home">
       {/* passing in our chatroom component first */}
-      <Chatroom />
+      <Chatroom groupTasks={groupTasks} setGroupTasks={setGroupTasks}/>
       {/* passing in our noteboard component next */}
       <Noteboard onTaskDone={getTasks}/>
       {/* passing in our donetasks component last */}

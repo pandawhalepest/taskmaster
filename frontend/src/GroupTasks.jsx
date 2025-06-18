@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import TaskPopUp from "./TaskPopUp";
 
-export default function GroupTasks() {
-  const [groupTasks, setGroupTasks] = useState([]);
+export default function GroupTasks({ groupTasks, setGroupTasks }) {
+    
   const [showPopUp, setShowPopUp] = useState(false);
 
   const addGroupTask = (task) => setGroupTasks((prev) => [...prev, task]);
