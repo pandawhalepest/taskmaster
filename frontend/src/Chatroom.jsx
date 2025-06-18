@@ -53,6 +53,7 @@ export default function Chatroom( {groupTasks, setGroupTasks}) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          credentials: 'include',
         },
         body: JSON.stringify({ sender, content }),
       });

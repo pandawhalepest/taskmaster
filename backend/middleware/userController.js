@@ -70,6 +70,8 @@ export const login = async (req, res, next) => {
     const accessToken = jwt.sign(username, process.env.ACCESS_TOKEN_SECRET);
     console.log('accessToken created as: ', accessToken);
 
+    //creating cookie w access token of user
+    res.cookie('accessToken', accessToken, { httpOnly: true });
     res.locals.user = {
       id: user._id,
       username: user.username,
