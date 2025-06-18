@@ -1,8 +1,17 @@
 import express from 'express';
 import connectDB from './config/database.js';
-import { signup, login, getUsers, deleteUser} from './middleware/userController.js';
-import {postMessage, getMessages} from './middleware/messageController.js'
-import { postTask, getTasks, deleteTasks } from './middleware/taskController.js';
+import {
+  signup,
+  login,
+  getUsers,
+  deleteUser,
+} from './middleware/userController.js';
+import { postMessage, getMessages } from './middleware/messageController.js';
+import {
+  postTask,
+  getTasks,
+  deleteTasks,
+} from './middleware/taskController.js';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' });
@@ -25,46 +34,49 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    console.log('we are connected at the root endpoint');
+  console.log('we are connected at the root endpoint');
   res.send('API is running...');
 });
 
 // Import routes
 //post request for signup
 app.post('/api/signup', signup, (req, res) => {
-     res.status(200).json({
+  console.log(res.locals.user);
+  res.status(200).json({
     message: res.locals.message,
     user: res.locals.user,
   });
-}); 
+});
 
 //post request for login
-app.post('/api/login', login, (req, res) => {
-      res.status(200).json({
+app.post('/api/login', login, (req, res) => { //!Start new session? need to store access token
+  res.status(200).json({
     message: res.locals.message,
     user: res.locals.user,
-  })
+  });
 });
 
 //get request for login
 app.get('/api/login', getUsers, (req, res) => {
-    res.status(200).json(res.locals.users)
-})
+  res.status(200).json(res.locals.users);
+});
 
 //delete request for users
 app.delete('/api/users', deleteUser, (req, res) => {
-      res.status(200).json({ message: 'User deleted', user: res.locals.deletedUser });
-})
+  res
+    .status(200)
+    .json({ message: 'User deleted', user: res.locals.deletedUser });
+});
 
 //post request for messages
 app.post('/api/messages', postMessage, (req, res) => {
-     res.status(200).json(res.locals.message);
-})
+  res.status(200).json(res.locals.message);
+});
 
 //get request for messages
 app.get('/api/messages', getMessages, (req, res) => {
-     res.status(200).json(res.locals.allMessages)
-})
+  res.status(200).json(res.locals.allMessages);
+});
 
 app.post('/api/task', postTask, (req, res) => {
   res.status(200).json(res.locals.postedTask);
@@ -74,9 +86,9 @@ app.get('/api/task', getTasks, (req, res) => {
   res.status(200).json(res.locals.tasks);
 });
 
-app.delete('/api/task', deleteTasks, (req, res) => {
-  res.status(200).json(res.locals.deletedTasks)
-})
+app.delete('/api/task', deleteTasks, (req, res) => { 
+  res.status(200).json(res.locals.deletedTasks);
+});
 // app.delete('/api/task/:username', (req, res) => {
 //     //delete task logic here
 //     res.send(`Delete task for user: ${req.params.username}`);
