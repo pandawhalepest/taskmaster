@@ -2,7 +2,7 @@ import { useState } from 'react';
 import TaskPopUp from "./TaskPopUp";
 
 export default function GroupTasks({ groupTasks, setGroupTasks }) {
-    
+
   const [showPopUp, setShowPopUp] = useState(false);
 
   const addGroupTask = (task) => setGroupTasks((prev) => [...prev, task]);
@@ -16,10 +16,10 @@ export default function GroupTasks({ groupTasks, setGroupTasks }) {
             <p className="no-tasks">No tasks yet...</p>
         ): (
             <ul className="group-task-list">
-                {groupTasks.map((title, index) => (
+                {groupTasks.map((task, index) => (
                     <li key={index}>
-                        <strong>{title.title}</strong>
-                        {title.description && <> - {title.description}</>}
+                        <strong>{task.title}</strong>
+                        {task.description && <> - {task.description}</>}
                     </li>
                 ))}
             </ul>

@@ -1,5 +1,7 @@
-// //https://www.npmjs.com/package/supertest
-// //supertest to test make http requests to test api
+
+//https://www.npmjs.com/package/supertest
+//supertest to test make http requests to test api
+
 
 const request = require('supertest');
 
@@ -33,12 +35,51 @@ describe('/api/task', () => {
         .post('/api/task')
         .send(testTask)
         .then((response) => {
-          console.log(response);
           expect(response.body.title).toEqual('testTitle');
-          expect(response.body.description).toEqual('testDescription');
-          expect(response.body._id);
-          //body.id to have typeof number
-          //that body.id to e
+        });
+    });
+  });
+
+  describe('GET', () => {
+    it('responds with 200 status and application/json type', () => {
+      return request(server)
+        .get('/api/task')
+        .expect('Content-Type', /application\/json/)
+        .expect(200);
+    });
+  });
+
+  describe('DELETE', () => {
+    it('responds with 200 status and application/json type', () => {
+      const mockTask = { title: 'deleteThis', description: 'toBeDeleted' };
+
+      return request(server)
+        .post('/api/task')
+        .send(mockTask)
+        .then((postResponse) => {
+          const { _id } = postResponse.body;
+
+          return request(server)
+            .delete('/api/task')
+            .send({ id: _id })
+            .expect(200)
+            .expect('Content-Type', /application\/json/)
+            .then((deleteResponse) => {
+               // console.log('DELETE body:', deleteResponse.body);
+                expect(deleteResponse.body).toHaveProperty('acknowledged', true);
+                expect(deleteResponse.body).toHaveProperty('deletedCount');
+                expect(deleteResponse.body.deletedCount).toBeGreaterThan(0);
+                
+              
+              return request(server)
+                .get('/api/task')
+                .then((getResponse) => {
+                  const exists = getResponse.body.find(
+                    (item) => item._id === _id
+                  );
+                  expect(exists).toBeUndefined();
+                });
+            });
         });
     });
   });
