@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 export default function Donetasks({ doneTask, refreshDoneTasks }) {
-
   //async function to delete all tasks when button is clicked
   async function deleteTasks() {
     //try catch block
@@ -25,7 +24,6 @@ export default function Donetasks({ doneTask, refreshDoneTasks }) {
       console.log(error);
     }
   }
-
 
   return (
     // testing and using as template

@@ -28,9 +28,9 @@ const app = express();
 
 // Debug middleware
 app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path}`);
-  console.log('Headers:', req.headers);
-  console.log('Body:', req.body);
+  // console.log(`${req.method} ${req.path}`);
+  //console.log('Headers:', req.headers);
+  //console.log('Body:', req.body);
   next();
 });
 
@@ -57,7 +57,7 @@ app.get('/', getTasks, (req, res) => {
 // Import routes
 //post request for signup
 app.post('/api/signup', signup, (req, res) => {
-  console.log(res.locals.user);
+  //console.log(res.locals.user);
 
   res.status(200).json({
     message: res.locals.message,
@@ -89,7 +89,7 @@ app.delete('/api/users', deleteUser, (req, res) => {
 
 //post request for messages
 app.post('/api/messages', tokenVerifier, postMessage, (req, res) => {
-  console.log('postMessage', req);
+  //console.log('postMessage', req);
   console.log('auth!!!', req.headers['cookie']);
   res.status(200).json(res.locals.message);
 });
@@ -124,5 +124,17 @@ app.delete('/api/task', deleteTasks, (req, res) => {
 //     //create chat logic here
 //     res.send('Create chat endpoint');
 // });
+
+//global error handler
+app.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred' },
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
+});
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
