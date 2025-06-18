@@ -63,6 +63,7 @@ export default function Chatroom() {
       console.log(data);
       // invoke getMessages immediately after user posts a message
       await getMessages();
+      setContent(''); //? ST: To clear chat area!
     } catch (error) {
       //log thrown error
       console.log(error);
@@ -83,7 +84,7 @@ export default function Chatroom() {
       console.log(data);
       //set messages with a new array with each element being the author and message from data we recieved
       const messages = data.map(
-        (mess) => `Author: ${mess.sender}\n message: ${mess.content}`,
+        (mess) => ({ sender: mess.sender, content: mess.content}) //? ST: Adjusted to have more control over the input
       );
       setMessage(messages);
     } catch (error) {
@@ -91,6 +92,11 @@ export default function Chatroom() {
       console.log(error);
     }
   }
+
+  useEffect(() => {
+    getMessages();
+  }, []);
+
   return (
     <div id="chatroom">
       <div id="messages">
@@ -100,11 +106,10 @@ export default function Chatroom() {
           .slice()
           .reverse()
           .map((mess, index) => (
-            <div>
-              <p key={index} style={{ whiteSpace: 'pre-line' }}>
-                {mess}
+            <div key={index} className={mess.sender === sender? 'my-message' : 'other-message'}> {/* ST: Adjusted map to take in different users */}
+              <p style={{ whiteSpace: 'pre-line' }}>
+                <strong>{mess.sender}: </strong> {mess.content} 
               </p>
-              <br></br>
             </div>
           ))}
       </div>
