@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import GroupTasks from './GroupTasks';
 
-export default function Chatroom( {groupTasks, setGroupTasks}) {
+export default function Chatroom({ groupTasks, setGroupTasks }) {
   //store firstnames from user database
   const [firstNames, setFirstNames] = useState([]);
   //stores user inputs of sender and content info
@@ -26,7 +26,7 @@ export default function Chatroom( {groupTasks, setGroupTasks}) {
       }
       //parse response
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
       //store array with firstnames in variable
       const names = data.map((users) => users.firstName);
       //create a set for unique names
@@ -59,11 +59,14 @@ export default function Chatroom( {groupTasks, setGroupTasks}) {
       });
       //if respones fails throw error
       if (!response.ok) {
-        throw new Error('response failed');
+        // throw new Error('response failed');
+        const error = await response.json();
+        alert(error.err);
+        throw new Error(error.err);
       }
       //parse data
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
       // invoke getMessages immediately after user posts a message
       await getMessages();
       setContent(''); //? ST: To clear chat area!
@@ -84,10 +87,10 @@ export default function Chatroom( {groupTasks, setGroupTasks}) {
       }
       //parse data
       const data = await response.json();
-      console.log(data);
+      //(data);
       //set messages with a new array with each element being the author and message from data we recieved
       const messages = data.map(
-        (mess) => ({ sender: mess.sender, content: mess.content}) //? ST: Adjusted to have more control over the input
+        (mess) => ({ sender: mess.sender, content: mess.content }) //? ST: Adjusted to have more control over the input
       );
       setMessage(messages);
     } catch (error) {
@@ -101,29 +104,36 @@ export default function Chatroom( {groupTasks, setGroupTasks}) {
   }, []);
 
   return (
-    <div id="chatroom">
-      <div id="group-task-box">
-        <GroupTasks groupTasks={groupTasks} setGroupTasks={setGroupTasks}/>
+    <div id='chatroom'>
+      <div id='group-task-box'>
+        <GroupTasks groupTasks={groupTasks} setGroupTasks={setGroupTasks} />
       </div>
-      <div id="messages">
+      <div id='messages'>
         {/* had to look this one up since i didnt know that we had to use slice in order not to mutate original state */}
         {/* display each element from message in reverse so we can see latest messages when interacting */}
         {message
           .slice()
           .reverse()
           .map((mess, index) => (
-            <div key={index} className={mess.sender === sender? 'my-message' : 'other-message'}> {/* ST: Adjusted map to take in different users */}
+            <div
+              key={index}
+              className={
+                mess.sender === sender ? 'my-message' : 'other-message'
+              }
+            >
+              {' '}
+              {/* ST: Adjusted map to take in different users */}
               <p style={{ whiteSpace: 'pre-line' }}>
-                <strong>{mess.sender}: </strong> {mess.content} 
+                <strong>{mess.sender}: </strong> {mess.content}
               </p>
             </div>
           ))}
       </div>
       {/* sending a message area */}
-      <form id="send-message" onSubmit={postMessage}>
+      <form id='send-message' onSubmit={postMessage}>
         {/* using a dropdown menu for the author of the message */}
         <select
-          id="author"
+          id='author'
           value={sender}
           onChange={(e) => setSender(e.target.value)}
         >
@@ -136,13 +146,13 @@ export default function Chatroom( {groupTasks, setGroupTasks}) {
         </select>
         {/* text box to write a message */}
         <textarea
-          id="message-input"
-          placeholder="send a message..."
+          id='message-input'
+          placeholder='send a message...'
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
         {/* send message button */}
-        <button id="message-submit" type="submit">
+        <button id='message-submit' type='submit'>
           Send
         </button>
       </form>

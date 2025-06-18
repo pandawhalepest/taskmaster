@@ -42,7 +42,7 @@ export default function Home() {
       {/* passing in our chatroom component first */}
       <Chatroom groupTasks={groupTasks} setGroupTasks={setGroupTasks}/>
       {/* passing in our noteboard component next */}
-      <Noteboard onTaskDone={getTasks}/>
+      <Noteboard onTaskDone={getTasks} groupTasks={groupTasks}/>
       {/* passing in our donetasks component last */}
       <Donetasks doneTask={doneTask} refreshDoneTasks={getTasks}/>
     </div>

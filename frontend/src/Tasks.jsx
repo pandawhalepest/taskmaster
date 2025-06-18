@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import Dropdown from './Dropdown';
 
-export default function Tasks({ onTaskDone }) {
+export default function Tasks({ onTaskDone, groupTasks }) {
   //store first name user
   const [firstNames, setFirstNames] = useState([]);
   //store user tasks to value of their task name
@@ -12,6 +13,8 @@ export default function Tasks({ onTaskDone }) {
   const [description, setDescription] = useState('');
   //? ST: Flipped Card functionality
   const [flipped, setFlipped] = useState([]);
+  //? ST: To track what Group Task is currently selected
+  const [selectedGroupTask, setSelectedGroupTask] = useState({})
 
   //invoke our first name function on mount
   useEffect(() => {
@@ -153,6 +156,15 @@ export default function Tasks({ onTaskDone }) {
     }));
   }
 
+  //? ST: Event handler to update dropdown select state
+  const handleSelect = (user, taskIndex, e) => {
+    const gTask = groupTasks.find(t => t.title === e.target.value);
+    setSelectedGroupTask(prev => ({
+      ...prev,
+      [`${user}-${taskIndex}`]: gTask
+    }));
+  };
+
   return (
     <div id='firstnames'>
       {/* map through our firstnames array */}
@@ -175,9 +187,31 @@ export default function Tasks({ onTaskDone }) {
                   style={{ backgroundColor }}
                   onClick={() => handleFlip(user, taskIndex)}
                 >
-                  {!flipped[`${user}-${taskIndex}`] ? (
-                    <div id='cards-texts' className="card-front">Parker's stuff</div>
+                  {!flipped[`${user}-${taskIndex}`] ? ( //? ST: For creating flip
+
+                  //? ST: FOR FRONT SIDE OF CARD
+                    <div id='cards-texts' className="card-front">
+                      {selectedGroupTask[`${user}-${taskIndex}`] ? (
+                        <div>
+                          <h4>{selectedGroupTask[`${user}-${taskIndex}`].title}</h4>
+                          <p>{selectedGroupTask[`${user}-${taskIndex}`].description}</p>
+                        </div>
+                      ) : (
+                          <select onChange={e => handleSelect(user, taskIndex, e)} onClick={e => e.stopPropagation()}>
+                            <option value="">-- Please choose a group task --</option>
+                            {groupTasks.map(task => (
+                            <option key={task.title} value={task.title}>
+                              {task.title}
+                            </option>
+                          ))}
+                          </select>
+                      )
+                    }
+                     
+                    </div>
                   ) : (
+
+                    //? ST: FOR BACKEND OF CARD
                     <div id='cards-texts' className="card-back">
                     {!done ? (
                     //display form to enter task and description
