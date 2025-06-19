@@ -1,422 +1,426 @@
 /* css moved to a single file here from previous multiple files */
 /* App.css */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-    height: 100%;
-    margin: 0;
+  height: 100%;
+  margin: 0;
+  
 }
 
 /* Chatroom.css */
+#group-task-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: pink;
+  border-radius: 10px;
+  padding: 20px;
+}
 #chatroom {
-    display: flex;
-    flex-direction: column;
-    height: 85vh;
-    width: 15%;
-    position: relative;
-    margin: 30px 25px 25px 25px;
-    box-shadow: 10px 10px 15px 0px #434343;
-
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  width: 15%;
+  position: relative;
+  margin: 30px 25px 25px 25px;
+  box-shadow: 10px 10px 15px 0px #434343;
 }
 
 #messages {
-    /* border: 3px solid black; */
-    border-radius: 10px;
-    width: 100%;
-    flex: 3;
-    /* background-color: #254b86; */
-    /* background-image: url('/download.jpeg'); */
-    background-image: url("../public/old-paper-1.jpg");
-    background-size: auto;
-    background-position: center;
-    background-size: cover;
+  /* border: 3px solid black; */
+  border-radius: 10px;
+  width: 100%;
+  flex: 3;
+  /* background-color: #254b86; */
+  /* background-image: url('/download.jpeg'); */
+  background-image: url('../public/old-paper-1.jpg');
+  background-size: auto;
+  background-position: center;
+  background-size: cover;
 
-    display: flex;
-    flex-direction: column-reverse;
-    /* align-items: flex-start; */
-    overflow-y: auto;
-    min-height: 0;
-    overflow-wrap: anywhere;
+  display: flex;
+  flex-direction: column-reverse;
+  /* align-items: flex-start; */
+  overflow-y: auto;
+  min-height: 0;
+  overflow-wrap: anywhere;
 }
 
 #send-message {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    width: 100%;
-    border-right: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  border-right: 3px solid black;
 }
 
 #message-input {
-    resize: none;
-    height: 100%;
+  resize: none;
+  height: 100%;
 }
 
 .other-message {
-    background: #bd8b1f2a;
-    border-radius: 12px;
-    padding: 10px 16px;
-    margin: 8px 0;
-    box-shadow: 0 2px 8px rgba(30, 80, 200, 0.08);
-    border: 1px solid #b3d1fa;
-    width: fit-content;
-    max-width: 90%;
+  background: #bd8b1f2a;
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin: 8px 0;
+  box-shadow: 0 2px 8px rgba(30, 80, 200, 0.08);
+  border: 1px solid #b3d1fa;
+  width: fit-content;
+  max-width: 90%;
 }
 
 .my-message {
-    background: #168bc22a;
-    border-radius: 12px;
-    padding: 10px 16px;
-    margin: 8px 0;
-    box-shadow: 0 2px 8px rgba(30, 80, 200, 0.08);
-    border: 1px solid #b3d1fa;
-    width: fit-content;
-    max-width: 90%;
+  background: #1675c22a;
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin: 8px 0;
+  box-shadow: 0 2px 8px rgba(30, 80, 200, 0.08);
+  border: 1px solid #b3d1fa;
+  width: fit-content;
+  max-width: 90%;
 
-    
-    display: flex;
-    align-self: flex-end;
+  display: flex;
+  align-self: flex-end;
 }
 
 /* Donetasks.css */
 #done-tasks {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 15%;
-    height: 85vh;
-    overflow-wrap: anywhere;
-    /* background-color: #254b86; */
-    /* background-image: url('/download.jpeg'); */
-    /* border: 3px solid black; */
-    margin: 30px 25px 25px 25px;
-    border-radius: 10px;
-    box-shadow: 10px 10px 15px 0px #6d6d6d;
-    background-image: url("../public/old-paper-2.jpg");
-    background-size: auto;
-    background-position: center;
-    background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 15%;
+  height: 85vh;
+  overflow-wrap: anywhere;
+  /* background-color: #254b86; */
+  /* background-image: url('/download.jpeg'); */
+  /* border: 3px solid black; */
+  margin: 30px 25px 25px 25px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px 0px #6d6d6d;
+  background-image: url('../public/old-paper-2.jpg');
+  background-size: auto;
+  background-position: center;
+  background-size: cover;
 }
 
 .task-head {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    padding: 0px 0px 20px 30px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  padding: 0px 0px 20px 30px;
 }
 
 #done-tasks ul {
-    list-style-type: circle;
-    list-style-position: inside;
-    padding-left: 25px;
+  list-style-type: circle;
+  list-style-position: inside;
+  padding-left: 25px;
 }
 
 #tasks {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
 }
 
 /* Home.css */
 #home {
-    display: flex;
-    flex-direction: row;
-    background-image: url("public/cardboard-with-gradient.jpg");
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    overflow: auto;
-    background-size: cover;
-
+  display: flex;
+  flex-direction: row;
+  /* background-image: url('public/cardboard-with-gradient.jpg'); */
+  background-color: #fd0de5;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: auto;
+  background-size: cover;
 }
 
 /* Login.css */
 #login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35vh;
 }
 
 #login-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 3px solid black;
-    background-color: #254b86;
-    padding: 50px;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+  background-color: #254b86;
+  padding: 50px;
+  gap: 20px;
 }
 
 #login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 #login-submit {
-    width: 75px;
+  width: 75px;
 }
 
 /* Navbar.css */
 #nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    /* background-color: rgb(207, 207, 207); */
-    /* color: #254b86; */
-    height: 5vh;
-    padding-left: 100px;
-    padding-right: 100px;
-    background-image: url("../public/wood-nav.jpg");
-    background-size: auto;
-    background-position: center;
-    background-size: cover;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: rgb(207, 207, 207); */
+  /* color: #254b86; */
+  height: 5vh;
+  padding-left: 100px;
+  padding-right: 100px;
+  background-image: url('../public/wood-nav.jpg');
+  background-size: auto;
+  background-position: center;
+  background-size: cover;
 }
 
 #task-logo {
-    text-decoration: none;
-    color: #fffafa;
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
+  text-decoration: none;
+  color: #fffafa;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
 }
 
 #master-logo {
-    text-decoration: none;
-    color: #fffafa;
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 300;
-
+  text-decoration: none;
+  color: #fffafa;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 300;
 }
 
 #links a {
-    text-decoration: none;
-    color: #fffafa;
-    font-family: "Nunito Sans", sans-serif;
-    font-style: normal;
-    font-weight: 400;
+  text-decoration: none;
+  color: #fffafa;
+  font-family: 'Nunito Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 #links {
-    display: flex;
-    gap: 25px;
+  display: flex;
+  gap: 25px;
 }
 
 img {
-    height: 85px;
-    width: 85px;
+  height: 85px;
+  width: 85px;
 }
 
 /* Noteboard.css */
 #board {
-    /* background-image: url('/download.jpeg'); */
-    background-color: rgb(150, 191, 248);
-    width: 70%;
-    height: 85vh;
-    /* border-top: 3px solid black; */
-    margin: 30px 0px 25px 0px;
-    border-radius: 10px;
-    background-image: url("../public/paper-texture-gradient.jpg");
-    background-size: auto;
-    background-position: center;
-    background-size: cover;
-    box-shadow: 10px 10px 15px 0px #575757;
-    overflow-x: auto;
+  /* background-image: url('/download.jpeg'); */
+  background-color: rgb(150, 191, 248);
+  width: 70%;
+  height: 85vh;
+  /* border-top: 3px solid black; */
+  margin: 30px 0px 25px 0px;
+  border-radius: 10px;
+  background-image: url('../public/paper-texture-gradient.jpg');
+  background-size: auto;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 10px 10px 15px 0px #575757;
+  overflow-x: auto;
 }
 
 /* Signup.css */
 #signup {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35vh;
 }
 
 #signup-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 3px solid black;
-    background-color: #254b86;
-    padding: 50px;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+  background-color: #254b86;
+  padding: 50px;
+  gap: 20px;
 }
 
 #signup-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 #signup-submit {
-    width: 75px;
+  width: 75px;
 }
 
 /* Tasks.css */
 #firstnames {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 10px;
-    font-family: "Lato", sans-serif;
-    font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
 }
 
 #user-column {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
 }
 
 #user-buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 10px;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
 }
 
 #cards {
-    height: 20vh;
-    width: 20vh;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  height: 20vh;
+  width: 20vh;
 
-    overflow-wrap: anywhere;
-    border: 1px solid black;
-    background-color: red;
-    border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-    position: relative;
-    perspective: 1000px;
+  overflow-wrap: anywhere;
+  border: 1px solid black;
+  background-color: red;
+  border-radius: 15px;
+
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+  perspective: 1000px;
 }
 
 #cards-texts {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 5px;
 }
 
 #cards.flipped {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .card-front {
-    position: absolute;
-    backface-visibility: hidden;
+  position: absolute;
+  backface-visibility: hidden;
 }
 
 .card-back {
-    position: absolute;
-    backface-visibility: hidden;
-    transform: rotateY(180deg);
+  position: absolute;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
 }
 
 /* global css styling */
 
 h2 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .add-button {
-    background-color: #2b2b2b;
-    border: none;
-    color: #f1d247;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 60px;
-    height: 25px;
-    font-weight: 300px;
+  background-color: #2b2b2b;
+  border: none;
+  color: #f1d247;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 60px;
+  height: 25px;
+  font-weight: 300px;
 }
 
 .done-button {
-    background-color: #2b2b2b;
-    border: none;
-    color: #f1d247;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 100px;
-    margin-top: 5px;
+  background-color: #2b2b2b;
+  border: none;
+  color: #f1d247;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100px;
+  margin-top: 5px;
 }
 
 .add-task-button {
-    background-color: #ffffff;
-    border: 1px solid #b0b0b0;
-    color: rgb(75, 75, 75);
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 70px;
-    height: 25px;
-    margin-top: 5px;
+  background-color: #ffffff;
+  border: 1px solid #b0b0b0;
+  color: rgb(75, 75, 75);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 70px;
+  height: 25px;
+  margin-top: 5px;
 }
 
 .delete-user-button {
-    background-color: #ffffff;
-    border: none;
-    border: 1px solid #b0b0b0;
-    color: rgb(42, 42, 42);
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 70px;
-    height: 25px;
-    margin-left: 5px;
+  background-color: #ffffff;
+  border: none;
+  border: 1px solid #b0b0b0;
+  color: rgb(42, 42, 42);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 70px;
+  height: 25px;
+  margin-left: 5px;
 }
 
 .delete-tasks-button {
-    background-color: #ffffff;
-    border: 1px solid #b0b0b0;
-    color: rgb(75, 75, 75);
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 70px;
-    height: 25px;
-    margin-top: 5px;
+  background-color: #ffffff;
+  border: 1px solid #b0b0b0;
+  color: rgb(75, 75, 75);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 70px;
+  height: 25px;
+  margin-top: 5px;
 }
-
